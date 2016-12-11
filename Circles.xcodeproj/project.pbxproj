@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		5B4C73861DFA09D40055DB51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C73851DFA09D40055DB51 /* AppDelegate.swift */; };
-		5B4C73881DFA09D40055DB51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C73871DFA09D40055DB51 /* ViewController.swift */; };
+		5B4C73881DFA09D40055DB51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C73871DFA09D40055DB51 /* MainViewController.swift */; };
 		5B4C738B1DFA09D40055DB51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4C73891DFA09D40055DB51 /* Main.storyboard */; };
 		5B4C738D1DFA09D40055DB51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B4C738C1DFA09D40055DB51 /* Assets.xcassets */; };
 		5B4C73901DFA09D40055DB51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4C738E1DFA09D40055DB51 /* LaunchScreen.storyboard */; };
 		5B4C739B1DFA09D40055DB51 /* CirclesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C739A1DFA09D40055DB51 /* CirclesTests.swift */; };
 		5B4C73A61DFA09D40055DB51 /* CirclesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C73A51DFA09D40055DB51 /* CirclesUITests.swift */; };
+		5B4C73B61DFA0C3B0055DB51 /* CircleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C73B51DFA0C3B0055DB51 /* CircleCollectionViewCell.swift */; };
+		5BD78E6D1DFCB20D00BD553E /* NewCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD78E6C1DFCB20D00BD553E /* NewCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,7 @@
 /* Begin PBXFileReference section */
 		5B4C73821DFA09D40055DB51 /* Circles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Circles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4C73851DFA09D40055DB51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B4C73871DFA09D40055DB51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5B4C73871DFA09D40055DB51 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B4C738A1DFA09D40055DB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B4C738C1DFA09D40055DB51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B4C738F1DFA09D40055DB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		5B4C73A11DFA09D40055DB51 /* CirclesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CirclesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4C73A51DFA09D40055DB51 /* CirclesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesUITests.swift; sourceTree = "<group>"; };
 		5B4C73A71DFA09D40055DB51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B4C73B51DFA0C3B0055DB51 /* CircleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCollectionViewCell.swift; sourceTree = "<group>"; };
+		5BD78E6C1DFCB20D00BD553E /* NewCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				5B4C73851DFA09D40055DB51 /* AppDelegate.swift */,
-				5B4C73871DFA09D40055DB51 /* ViewController.swift */,
+				5B4C73871DFA09D40055DB51 /* MainViewController.swift */,
+				5B4C73B51DFA0C3B0055DB51 /* CircleCollectionViewCell.swift */,
 				5B4C73891DFA09D40055DB51 /* Main.storyboard */,
+				5BD78E6C1DFCB20D00BD553E /* NewCollectionViewLayout.swift */,
 				5B4C738C1DFA09D40055DB51 /* Assets.xcassets */,
 				5B4C738E1DFA09D40055DB51 /* LaunchScreen.storyboard */,
 				5B4C73911DFA09D40055DB51 /* Info.plist */,
@@ -262,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B4C73881DFA09D40055DB51 /* ViewController.swift in Sources */,
+				5B4C73881DFA09D40055DB51 /* MainViewController.swift in Sources */,
+				5B4C73B61DFA0C3B0055DB51 /* CircleCollectionViewCell.swift in Sources */,
+				5BD78E6D1DFCB20D00BD553E /* NewCollectionViewLayout.swift in Sources */,
 				5B4C73861DFA09D40055DB51 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +520,7 @@
 				5B4C73AC1DFA09D40055DB51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B4C73AD1DFA09D40055DB51 /* Build configuration list for PBXNativeTarget "CirclesTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +529,7 @@
 				5B4C73AF1DFA09D40055DB51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B4C73B01DFA09D40055DB51 /* Build configuration list for PBXNativeTarget "CirclesUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +538,7 @@
 				5B4C73B21DFA09D40055DB51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
