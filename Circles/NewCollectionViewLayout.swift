@@ -8,16 +8,19 @@
 
 import UIKit
 
-var maxAngle : Float = 0.0 {
-didSet{
-    //invalidateLayout()
-    // sleep(1)
-}
-}
 
 
 
 class NewCollectionViewLayout: UICollectionViewLayout {
+    
+    var maxAngle : Float = 0.0 {
+        didSet{
+            
+            invalidateLayout()
+            // sleep(1)
+        }
+    }
+
     
     var allAttributes = [UICollectionViewLayoutAttributes]()
     
@@ -44,6 +47,7 @@ class NewCollectionViewLayout: UICollectionViewLayout {
 
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        print("layoutAttributesForElements is called")
         allAttributes.removeAll()
         for index in 0 ..< numberOfItems {
             let indexPath = IndexPath(item: index, section: 0)
@@ -52,8 +56,15 @@ class NewCollectionViewLayout: UICollectionViewLayout {
         return allAttributes
     }
     
+    override func invalidateLayout() {
+        print("invalidate layout")
+    }
+    
+    
     override func layoutAttributesForItem(at indexPath: IndexPath)
         -> UICollectionViewLayoutAttributes? {
+            
+            //print("layoutAttributesForItem is called")
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             let i = indexPath.row
             let iFloat = CGFloat(i)
@@ -76,5 +87,20 @@ class NewCollectionViewLayout: UICollectionViewLayout {
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
+    
+    override open func prepareForTransition(from oldLayout: UICollectionViewLayout) {
+       print("prepareForTransition from is called")
+        
+        return super.prepareForTransition(from: oldLayout)
+    }
+    
+    override open func finalizeLayoutTransition() {
+        print("finalizeLayoutTransition is called")
+        
+        super.finalizeLayoutTransition()
+    }
+
 
 }
+
+

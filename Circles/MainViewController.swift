@@ -11,95 +11,61 @@ import UIKit
     private let reuseIdentifier = "cell"
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    var zArray : [Int] = []
     var z : Int = 0
     
+    var oldLayout = NewCollectionViewLayout()
     let newLayout = NewCollectionViewLayout()
+    var layoutArray : [NewCollectionViewLayout] = []
     
+    @IBAction func resetAction(_ sender: Any) {
+        
+        z = 0
+        circleCollectionView.reloadData()
+        circleCollectionView.setCollectionViewLayout(layoutArray[0], animated: true)
+    }
     
     
     @IBAction func unfoldCollection(_ sender: Any) {
         
-       beginUnfolding()
-    }
-    
-    func beginUnfolding() {
-        //var i : Float = 0
-        var angles: [Float] = []
-        
-        for i in stride(from: 0, to: 3.1, by: 0.01) {
-            print(i)
-            angles.append(Float(i))
-        }
-        
-        
-        
-         //while maxAngle <= 3.1416 {
-        for angle in angles {
-            let oldLayout = newLayout
+        for layout in self.layoutArray {
             
-           maxAngle = angle
-
-            self.circleCollectionView!.performBatchUpdates({() -> Void in
-                self.circleCollectionView!.reloadData()
-              }, completion: {(_ finished: Bool) -> Void in
-            })
-            
-        }
-   }
-
-        //
-                //self.circleCollectionView.collectionViewLayout.invalidateLayout()
-                //self.circleCollectionView.collectionViewLayout = self.newLayout
-                  //self.circleCollectionView.collectionViewLayout.prepareForTransition(from: oldLayout)
-                //self.circleCollectionView.collectionViewLayout.prepareForTransition(to: self.newLayout)
-            
-               // self.circleCollectionView.collectionViewLayout.finalizeLayoutTransition()
-            
-               /*
-                self.circleCollectionView.collectionViewLayout.invalidateLayout()
-                self.circleCollectionView.collectionViewLayout = self.newLayout
-                self.circleCollectionView.collectionViewLayout.prepareForTransition(from: oldLayout)
-                self.circleCollectionView.collectionViewLayout.prepareForTransition(to: self.newLayout)
+            // DispatchQueue.main.async {
+            print("This is run on the main queue, after the previous code in outer block")
+            self.circleCollectionView.collectionViewLayout.invalidateLayout()
+                self.circleCollectionView.setCollectionViewLayout(layout, animated: true)
                 
-                self.circleCollectionView.reloadData()
-            
-                self.circleCollectionView.collectionViewLayout.finalizeLayoutTransition()
- 
-                newLayout.invalidateLayout()
-                circleCollectionView?.performBatchUpdates({
- 
-              }) { completion in
-                print("newLayout.maxAngle", maxAngle)
-                // print("angle per item", self.cvLayout.anglePerItem)
-                }
-            
+            self.circleCollectionView.reloadData()
+                    
+             // }
+           
+            }
         }
+    
+ 
+    
+    
+    @IBAction func stepAction(_ sender: Any) {
+ 
+     z = z + 1
+     
+     
+     // DispatchQueue.main.async {
+     self.circleCollectionView.collectionViewLayout.invalidateLayout()
+     self.circleCollectionView.setCollectionViewLayout(self.layoutArray[self.z], animated: true)
+     //self.circleCollectionView.reloadData()
+     //self.circleCollectionView.setNeedsDisplay()
+     
+     //}
+ 
 
     }
-    */
-    func simplestCompleter(completion: () -> ()) {
-       // self.circleCollectionView.collectionView
 
-        //this is where the code that has to finish goes
-        print("in simplestCompleter block")
-        
-        //self.circleCollectionView.collectionViewLayout.invalidateLayout()
-        //self.circleCollectionView.startInteractiveTransition(to: self.cvLayout, completion: nil)
-       // self.circleCollectionView.setCollectionViewLayout(self.cvLayout, animated: true)
-        
-        // self.circleCollectionView.finishInteractiveTransition()
 
-        
-        
-        completion()
-    }
-    
-    
-    
 
-    
-    
+
+
+
+
     @IBOutlet weak var circleCollectionView: UICollectionView!
     
     
@@ -109,7 +75,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         override func viewDidLoad() {
             super.viewDidLoad()
             
-           // self.circleCollectionView.collectionViewLayout = self.cvLayout
+          self.circleCollectionView.collectionViewLayout = oldLayout
+          self.circleCollectionView.setCollectionViewLayout(oldLayout, animated: true, completion: nil)
+            
+         //set up layout array
+            
+            for z in 0...10 {
+                let layout = NewCollectionViewLayout()
+                layout.maxAngle = Float(z)/Float(3)
+                layoutArray.append(layout)
+            }
             
             
             // Uncomment the following line to preserve selection between presentations
@@ -177,7 +152,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         print("U clicked: ", nameArray[indexPath.row])
     
     }
-        
+    
+   
+   
         // MARK: UICollectionViewDelegate
         
         /*
@@ -210,4 +187,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
          */
         
 }
+
+
 
